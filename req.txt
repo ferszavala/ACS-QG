@@ -1,0 +1,9 @@
+# Librerias	por agregar ya que las que venían en el repositorio ya estaba descontinuada
+
+spacy==2.1.3
+pyahocorasick==1.4.0
+gensim==3.7.1
+sentencepiece==0.1.82
+benepar==0.1.2
+protobuf==3.20.*
+python -m spacy download en_core_web_sm	

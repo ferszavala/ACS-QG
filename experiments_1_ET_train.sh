@@ -1,6 +1,6 @@
-python3 run_glue.py \
+python run_glue.py \
         --model_type xlnet \
-        --model_name_or_path ../../../file/ET/models/xlnet-base-cased/ \
+        --model_name_or_path xlnet-base-cased \
         --task_name MRPC \
         --do_train \
         --do_eval \

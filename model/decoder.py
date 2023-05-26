@@ -24,6 +24,8 @@ class Decoder(nn.Module):
         input_size = dec_input_size  # in our model, it is the word embedding dimension
         if self.input_feed:  # whether concatenate the context vector with the word embeddings at each time step
             input_size += config.enc_rnn_size
+
+            
         self.rnn = StackedGRU(  # NOTICE: why use StackedGRU instead of default multi-layer GRU?
             config.layers, input_size, config.dec_rnn_size, config.dropout)
         self.attn = ConcatAttention(

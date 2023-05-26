@@ -1,1 +1,1 @@
-python3 experiments_debug.py
+python experiments_debug.py
