@@ -15,6 +15,7 @@ current_path = os.getcwd().split("/")
 #current_path = "/Users/bangliu/Documents/Work/CurrentWork/FQG/src/model/FactorizedQG".split("/")
 
 DATA_PATH = "/".join(current_path[:-4]) + "/Datasets/"
+print("DATA_PATH: ", DATA_PATH)
 PROJECT_PATH = "/".join(current_path[:-4]) + "/FQG/"
 
 CODE_PATH = PROJECT_PATH + "src/model/FactorizedQG/"
@@ -84,20 +85,23 @@ SPECIAL_TOKENS = {"pad": "<pad>", "oov": "<oov>", "sos": "<sos>", "eos": "<eos>"
 SPECIAL_TOKEN2ID = {"<pad>": 0, "<oov>": 1, "<sos>": 2, "<eos>": 3}
 
 # spaCy
-NLP = spacy.load("en")
+NLP = spacy.load("en_core_web_sm")
 # prevent tokenizer split special tokens
 for special_token in SPECIAL_TOKENS.values():
     NLP.tokenizer.add_special_case(special_token, [{ORTH: special_token}])
 
 # benepar
+benepar.download('benepar_en2')
 PARSER = benepar.Parser("benepar_en2")
 
 # glove
+print("Loading GloVe ...")
 GLOVE = gensim.models.KeyedVectors.load_word2vec_format(GLOVE_BIN_PATH, binary=True)
-
+print("Finished loading GloVe ...")
 # device
-DEVICE = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
-
+# 
+DEVICE = 'cpu'
+print(DEVICE)
 # env
 EXP_PLATFORM = "others"  # set it to be "venus" or any other string. This is just used for run experiments on Venus platform.
 
